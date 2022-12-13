@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use std::{
     fs::File,
     io::{BufRead, BufReader},
@@ -5,6 +7,7 @@ use std::{
 
 mod day_1;
 mod day_2;
+mod day_3;
 
 fn main() {
     let file = File::open("./src/input").expect("File not found");
@@ -23,6 +26,6 @@ fn main() {
         lines.push(converted);
     }
 
-    let answer = day_2::run(lines);
+    let answer = day_3::run(lines);
     println!("{}", answer);
 }
