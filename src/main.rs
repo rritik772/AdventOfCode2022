@@ -8,24 +8,20 @@ use std::{
 mod day_1;
 mod day_2;
 mod day_3;
+mod day_4;
 
 fn main() {
     let file = File::open("./src/input").expect("File not found");
     let reader = BufReader::new(file);
 
-    let mut lines: Vec<Vec<char>> = vec![];
+    let mut lines: Vec<String> = vec![];
 
     for line in reader.lines() {
         let line = line.expect("No line was found.");
 
-        let converted = line
-            .split(" ")
-            .flat_map(|s| s.chars())
-            .collect::<Vec<char>>();
-
-        lines.push(converted);
+        lines.push(line);
     }
 
-    let answer = day_3::run(lines);
+    let answer = day_4::run(lines);
     println!("{}", answer);
 }
