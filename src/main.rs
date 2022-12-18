@@ -10,6 +10,7 @@ mod day_2;
 mod day_3;
 mod day_4;
 mod day_5;
+mod day_6;
 
 fn main() {
     let file = File::open("./src/input").expect("File not found");
@@ -23,6 +24,6 @@ fn main() {
         lines.push(line);
     }
 
-    let answer = day_5::run(lines);
-    println!("{}", answer);
+    let answer = day_6::run(lines);
+    println!("{:?}", answer);
 }
