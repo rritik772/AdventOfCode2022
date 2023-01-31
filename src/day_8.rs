@@ -10,7 +10,7 @@ fn first(lines: Vec<String>) -> usize {
     for (i, line) in lines.iter().enumerate() {
         let mut gt = usize::MIN;
 
-        for (j, c) in  line.chars().enumerate() {
+        for (j, c) in line.chars().enumerate() {
             let curr = c as usize - '0' as usize;
 
             if curr > gt {
@@ -18,7 +18,6 @@ fn first(lines: Vec<String>) -> usize {
                 visibility[i][j] = true;
             }
         }
-
     }
 
     // top
@@ -65,16 +64,17 @@ fn first(lines: Vec<String>) -> usize {
 
     for i in 0..lines.len() {
         for j in 0..lines[i].len() {
-            if i == 0 || i == lines.len() - 1 ||
-                j == 0 || j == lines[i].len() - 1 {
-                    visibility[i][j] = true;
-                }
+            if i == 0 || i == lines.len() - 1 || j == 0 || j == lines[i].len() - 1 {
+                visibility[i][j] = true;
+            }
         }
     }
 
     for i in 0..lines.len() {
         for j in 0..lines[i].len() {
-            if visibility[i][j] == true { total += 1; }
+            if visibility[i][j] == true {
+                total += 1;
+            }
         }
     }
 
@@ -91,12 +91,16 @@ fn print_visibility(visibility: &Vec<Vec<bool>>) {
 
 fn second(lines: Vec<String>) -> usize {
     let mut result = vec![vec![0; lines[0].len()]; lines.len()];
-    
+
     for (i, line) in lines.iter().enumerate() {
-        if i == 0 || i == lines.len() - 1 { continue; }
+        if i == 0 || i == lines.len() - 1 {
+            continue;
+        }
 
         for (j, e) in line.chars().enumerate() {
-            if j == 0 || j == lines[i].len() - 1 { continue; }
+            if j == 0 || j == lines[i].len() - 1 {
+                continue;
+            }
 
             let curr = e as usize - '0' as usize;
             let last = line.chars().nth(j - 1).unwrap() as usize - '0' as usize;
@@ -114,8 +118,8 @@ fn second(lines: Vec<String>) -> usize {
         println!("{:?}", line);
     }
 
-    for i in 1..lines[0].len()-1 {
-        for j in 1..lines.len()-1 {
+    for i in 1..lines[0].len() - 1 {
+        for j in 1..lines.len() - 1 {
             let curr = lines[j].chars().nth(i).unwrap() as usize - '0' as usize;
             let last = lines[j].chars().nth(i - 1).unwrap() as usize - '0' as usize;
 
@@ -132,8 +136,8 @@ fn second(lines: Vec<String>) -> usize {
         println!("{:?}", line);
     }
 
-    for i in 1..lines.len()-1 {
-        for j in (1..lines[i].len()-1).rev() {
+    for i in 1..lines.len() - 1 {
+        for j in (1..lines[i].len() - 1).rev() {
             let curr = lines[i].chars().nth(j).unwrap() as usize - '0' as usize;
             let last = lines[i].chars().nth(j + 1).unwrap() as usize - '0' as usize;
 
@@ -167,7 +171,6 @@ fn second(lines: Vec<String>) -> usize {
     for line in result.clone() {
         println!("{:?}", line);
     }
-
 
     let mut max = usize::MIN;
     for (_, line) in result.iter().enumerate() {
